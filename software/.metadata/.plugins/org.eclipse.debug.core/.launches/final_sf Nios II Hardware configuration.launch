@@ -3,9 +3,9 @@
 <stringAttribute key="byteStreamDeviceCableName" value="USB-Blaster on localhost [1-1.2]"/>
 <stringAttribute key="byteStreamDeviceDeviceID" value="1"/>
 <stringAttribute key="byteStreamDeviceInstanceID" value="0"/>
-<stringAttribute key="com.altera.sbtgui.launch.REMOTE_PORT" value="46859"/>
+<stringAttribute key="com.altera.sbtgui.launch.REMOTE_PORT" value="32831"/>
 <booleanAttribute key="downloadProgram" value="true"/>
-<stringAttribute key="elfFile" value="/home/pcmonkey/projects/nios2/software/final_sf/final_sf.elf"/>
+<stringAttribute key="elfFile" value="/home/pcmonkey/fff/software/final_sf/final_sf.elf"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.commandFactory" value="com.altera.debug.cdi.gdb.plugin.Nios2GDBServerGcc4CommandFactory"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.altera.debug.cdi.gdb.plugin.Nios2GdbCdiDebugger"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_REGISTER_GROUPS" value=""/>

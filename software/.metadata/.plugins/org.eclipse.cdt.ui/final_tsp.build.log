@@ -1,0 +1,10 @@
+
+**** Build of configuration Nios II for project final_tsp ****
+
+make all 
+Info: Building ../final_tsp_bsp/
+make --no-print-directory -C ../final_tsp_bsp/
+[BSP build complete]
+[final_tsp build complete]
+
+**** Build Finished ****

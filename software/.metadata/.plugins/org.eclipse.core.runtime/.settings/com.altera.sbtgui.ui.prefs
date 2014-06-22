@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 newBspWizardPage.defaultLocation=/home/pcmonkey/projects/nios2/software/final_bsp
 newBspWizardPage.sopcinfoFile=/home/pcmonkey/projects/nios2/nios2_c.sopcinfo
-newSoftwareExampleWizardPage.defaultLocation=/home/pcmonkey/projects/nios2/software/final_sf
-newSoftwareExampleWizardPage.sopcinfoFile=/home/pcmonkey/projects/nios2/nios2_c.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=/home/pcmonkey/projects/nios2/software/final_sf_bsp
+newSoftwareExampleWizardPage.defaultLocation=/home/pcmonkey/fff/software/final_tsp
+newSoftwareExampleWizardPage.sopcinfoFile=/home/pcmonkey/fff/nios2_c.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=/home/pcmonkey/fff/software/final_tsp_bsp

@@ -1,5 +1,5 @@
 Assembler report for nios2_c
-Sun Apr 20 22:50:02 2014
+Sun Jun 22 14:35:11 2014
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Apr 20 22:50:02 2014 ;
+; Assembler Status      ; Successful - Sun Jun 22 14:35:11 2014 ;
 ; Revision Name         ; nios2_c                               ;
 ; Top-level Entity Name ; top                                   ;
 ; Family                ; Cyclone V                             ;
@@ -104,8 +104,8 @@ applicable agreement for further details.
 ; Option         ; Setting                           ;
 +----------------+-----------------------------------+
 ; Device         ; 5CGXFC5C6F27C6                    ;
-; JTAG usercode  ; 0x03D40C8C                        ;
-; Checksum       ; 0x03D40C8C                        ;
+; JTAG usercode  ; 0x03D3E040                        ;
+; Checksum       ; 0x03D3E040                        ;
 +----------------+-----------------------------------+
 
 
@@ -115,15 +115,15 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sun Apr 20 22:49:34 2014
+    Info: Processing started: Sun Jun 22 14:34:51 2014
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off nios2_c -c nios2_c
 Info (115030): Assembler is generating device programming files
 Info (115017): Design contains a time-limited core -- only a single, time-limited programming file can be generated
 Warning (210042): Can't convert time-limited SOF into POF, HEX File, TTF, or RBF
 Info: Quartus II 32-bit Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 522 megabytes
-    Info: Processing ended: Sun Apr 20 22:50:02 2014
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Peak virtual memory: 504 megabytes
+    Info: Processing ended: Sun Jun 22 14:35:11 2014
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:20
 
 

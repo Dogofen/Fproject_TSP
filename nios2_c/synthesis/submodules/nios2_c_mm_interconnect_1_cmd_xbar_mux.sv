@@ -32,7 +32,7 @@
 //   PIPELINE_ARB:        1
 //   PKT_TRANS_LOCK:      50 (arbitration locking enabled)
 //   ST_DATA_W:           82
-//   ST_CHANNEL_W:        3
+//   ST_CHANNEL_W:        4
 // ------------------------------------------
 
 module nios2_c_mm_interconnect_1_cmd_xbar_mux
@@ -42,7 +42,7 @@ module nios2_c_mm_interconnect_1_cmd_xbar_mux
     // ----------------------
     input                       sink0_valid,
     input [82-1   : 0]  sink0_data,
-    input [3-1: 0]  sink0_channel,
+    input [4-1: 0]  sink0_channel,
     input                       sink0_startofpacket,
     input                       sink0_endofpacket,
     output                      sink0_ready,
@@ -53,7 +53,7 @@ module nios2_c_mm_interconnect_1_cmd_xbar_mux
     // ----------------------
     output                      src_valid,
     output [82-1    : 0] src_data,
-    output [3-1 : 0] src_channel,
+    output [4-1 : 0] src_channel,
     output                      src_startofpacket,
     output                      src_endofpacket,
     input                       src_ready,
@@ -64,12 +64,12 @@ module nios2_c_mm_interconnect_1_cmd_xbar_mux
     input clk,
     input reset
 );
-    localparam PAYLOAD_W        = 82 + 3 + 2;
+    localparam PAYLOAD_W        = 82 + 4 + 2;
     localparam NUM_INPUTS       = 1;
     localparam SHARE_COUNTER_W  = 1;
     localparam PIPELINE_ARB     = 1;
     localparam ST_DATA_W        = 82;
-    localparam ST_CHANNEL_W     = 3;
+    localparam ST_CHANNEL_W     = 4;
     localparam PKT_TRANS_LOCK   = 50;
 
 	assign	src_valid			=  sink0_valid;

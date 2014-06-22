@@ -34,6 +34,7 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -46,13 +47,17 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/final_bsp/system.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6018" selectionTopPixel="3298"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="umain.c" partName="umain.c" path="/home/pcmonkey/projects/nios2/software/final_sf/umain.c" title="umain.c" tooltip="final_sf/umain.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="umain.c" partName="umain.c" path="/home/pcmonkey/fff/software/final_sf/umain.c" title="umain.c" tooltip="final_sf/umain.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/final_sf/umain.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="10563" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10772" selectionOffset="0" selectionTopPixel="5116"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="alt_exit.c" partName="alt_exit.c" path="/home/pcmonkey/projects/nios2/software/final_sf_bsp/HAL/src/alt_exit.c" title="alt_exit.c" tooltip="final_sf_bsp/HAL/src/alt_exit.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/final_sf_bsp/HAL/src/alt_exit.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3734" selectionTopPixel="544"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="hello_world.c" partName="hello_world.c" path="/home/pcmonkey/fff/software/final_tsp/hello_world.c" title="hello_world.c" tooltip="final_tsp/hello_world.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/final_tsp/hello_world.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="459"/>
 </editor>
 </editors>
 <views>
@@ -281,7 +286,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1975d46" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="Disassembly"/>
 <page content="org.eclipse.ui.internal.introview" label="Welcome"/>
@@ -294,7 +299,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.22929937" ratioLeft="252" ratioRight="847" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.810901" ratioLeft="729" ratioRight="170" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -320,14 +325,9 @@
 </folder>
 </info>
 </mainWindow>
-<detachedWindow height="773" width="1368" x="0" y="24">
-<folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [1-1.2].1.0" appearance="2" expanded="2">
-<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [1-1.2].1.0" label="Nios II Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
-</folder>
-</detachedWindow>
+<hiddenWindow height="768" width="1366" x="-8" y="191">
+<view id="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [1-1.2].1.0"/>
+</hiddenWindow>
 </layout>
 </perspective>
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
@@ -426,19 +426,8 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/final_sf/umain.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/final_sf/inbox.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/final_tsp/hello_world.c"/>
 </editors>
-<item historyLabel="inbox.txt" index="1">
-<position/>
-</item>
-<item historyLabel="umain.c" index="0">
-<position info="not_deleted" x="3559" y="0"/>
-</item>
-<item historyLabel="inbox.txt" index="1">
-<position/>
-</item>
-<item historyLabel="umain.c" index="0">
-<position info="not_deleted" x="7222" y="0"/>
-</item>
 <item historyLabel="inbox.txt" index="1">
 <position/>
 </item>
@@ -574,8 +563,20 @@
 <item historyLabel="umain.c" index="0">
 <position info="not_deleted" x="10623" y="0"/>
 </item>
-<item active="true" historyLabel="umain.c" index="0">
+<item historyLabel="umain.c" index="0">
 <position info="not_deleted" x="10563" y="1"/>
+</item>
+<item historyLabel="umain.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="umain.c" index="0">
+<position info="not_deleted" x="397" y="8"/>
+</item>
+<item historyLabel="hello_world.c" index="2">
+<position info="not_deleted" x="10772" y="0"/>
+</item>
+<item active="true" historyLabel="hello_world.c" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -595,6 +596,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hello_world.c" tooltip="final_tsp/hello_world.c">
+<persistable path="/final_tsp/hello_world.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="inbox.txt" tooltip="final_sf/inbox.txt">
 <persistable path="/final_sf/inbox.txt"/>
 </file>
@@ -636,9 +640,6 @@
 </file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="config.h" tooltip="/home/pcmonkey/altera/13.1/nios2eds/bin/gnu/H-i686-pc-linux-gnu/nios2-elf/include/sys/config.h">
 <persistable path="/home/pcmonkey/altera/13.1/nios2eds/bin/gnu/H-i686-pc-linux-gnu/nios2-elf/include/sys/config.h" project="final"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="newlib.h" tooltip="/home/pcmonkey/altera/13.1/nios2eds/bin/gnu/H-i686-pc-linux-gnu/nios2-elf/include/newlib.h">
-<persistable path="/home/pcmonkey/altera/13.1/nios2eds/bin/gnu/H-i686-pc-linux-gnu/nios2-elf/include/newlib.h" project="final"/>
 </file>
 </mruList>
 </workbench>
