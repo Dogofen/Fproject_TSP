@@ -1,0 +1,45 @@
+/******		Double Linked List- a struct by Ori Gofen 				*/
+/****** 		creation date:20/8/13  								*/
+/****** 	      modification date:22/8/13							*/
+
+#ifndef __DLINKEDLIST_H__
+#define __DLINKEDLIST_H__
+
+
+typedef struct _Node Node; 
+
+struct _Node{
+	Node* m_next;
+	Node* m_prev;
+	int m_data;
+};
+
+struct _List{
+	Node m_head;
+	Node m_tail;
+};	
+
+typedef struct _List List;
+
+int ListJumpSearch(List *_list,int _what,int _jump,int _shake);
+
+List* ListCreate();
+
+void ListDestroy(List* Listp);
+
+ADTErr ListPushHead(List* Listp,int data);
+
+ADTErr ListPushTail(List* Listp,int data);
+
+ADTErr ListPopHead(List* Listp,int * data);
+
+ADTErr ListPopTail(List* Listp,int * data);
+
+void ListPrint(List* Listp,int direction);
+
+int ListCountItems(List* Listp);
+
+int ListIsEmpty(List* Listp);
+
+#endif
+

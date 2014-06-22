@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+#include "ADTDefs.h"
+char* GetErrorName(ADTErr i) 
+{
+   switch (i) 
+   {
+		case ERR_OK:return "NO ERRORS";
+      	case ERR_NOT_INITIALIZED:return "Object returned UnInitialization"	;
+      	case ERR_UNDERFLOW:return "Object returned Underflow";
+		case ERR_OVERFLOW:return "Object returned Overflow";
+		case ERR_ALLOCATION_FAILED :return "erorr in allocation";
+   		case ERR_REALLOCATION_FAILED:return "erorr in reallocation";
+    	case ERR_WRONG_INDEX:return "you have entered the wrong index";
+   		case ERR_GENERAL:return "command Error or unknown Error";
+   		case ERR_NOT_FOUND:return "Item was not found";
+		case ERR_DUPLICATIONS:return "NO Duplications aloud";
+		default: return "FAIL OR NULL";
+   }
+}
+

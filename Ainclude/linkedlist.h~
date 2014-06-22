@@ -1,0 +1,29 @@
+/******Linked List-  by Ori Gofen */
+/******creation date:19/8/13*/
+/******modification date:20/8/13*/
+
+#ifndef __LINKEDLIST_H__
+#define __LINKEDLIST_H__
+
+#include "ADTDefs.h"
+
+typedef struct _List List;
+
+List* ListCreate();
+
+void ListDestroy(List* _list);
+
+ADTErr ListPushHead(List* _list,int   data);
+
+ADTErr ListPopHead(List* _list,int * data);
+
+void ListPrint(List* _list);
+
+ADTErr ListInsertByKey(List* _list,int key,int data);
+
+ADTErr ListRemoveByKey(List* _list,int key,int* data);
+
+int ListFindNode(List* _list ,int key,int * data);
+
+List* ListFlip(List * _list,int kind);
+#endif

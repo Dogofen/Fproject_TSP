@@ -1,0 +1,35 @@
+/*
+ * utils.c
+ *
+ *  Created on: Apr 16, 2014
+ *      Author: root
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int* Crdist()
+{
+	FILE* btd;
+	int i=0,size=0;
+	int* dist;
+
+	btd = fopen("/mnt/host/inbox.tour.txt","r");
+	fscanf(btd,"%d",&size);
+	dist = (int*)malloc((size*size+1)*sizeof(int));
+	fclose(btd);
+	return dist;
+}
+void Filldist(int* _dist)
+{
+	FILE* btd;
+	int i=0;
+	btd = fopen("/mnt/host/inbox.txt","r");
+	fscanf(btd,"%d",&_dist[i]);
+	while(_dist[i] !=999)
+	{
+		++i;
+		fscanf(btd,"%d",&_dist[i]);
+	}
+	fclose(btd);
+}
+

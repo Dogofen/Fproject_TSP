@@ -1,0 +1,17 @@
+#ifndef __SORTS_H__
+#define __SORTS_H__
+
+#include "vector.h"
+
+
+void QuickSort(Vector* _vec,size_t left,size_t right);
+
+void BubbleSort(Vector* _vec);
+void InsertionSort(Vector* _vec);
+int CountSort(Vector* _vec,size_t mod) ;
+void RadixSort(Vector* _vec);
+void MergeSort(Vector* _vec, size_t left, size_t right);
+
+
+
+#endif	

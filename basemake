@@ -1,0 +1,13 @@
+#!/bin/sh
+CFLAGS+=$(INCDIR) -ansi -pedantic -Wall -g -std=c++0x 
+all:$(OUT)
+
+$(OUT):$(SRC:.cpp=.o)
+	$(LFLAGS) $^ $(AR)
+$(SRC:.cpp=.o):$(SRC)
+	$(CC) $(CFLAGS) -c $(@:.o=.cpp) -o $@
+depends:
+	$(CC) -MM $(INCDIR) $(SRC) > depends
+clean:
+	rm  $(SRC:.cpp=.o) depends
+

@@ -1,0 +1,498 @@
+/**********************************************************************
+	Autor: Ori Gofen
+	Creation date: 17.9.13
+	Last modified date: 17.9.13
+	Description: Graph Struct
+**********************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdlib>
+#include <vector>
+#include "graph.h"
+
+#include <iostream>
+#define CONCAT(A,B) A##B
+
+#ifndef NDEBUG
+#define ASSERT(X){\
+if((X)){\
+fprintf(stderr,"Assertion failed( " #X ") in file "__BASE_FILE__" created on "__DATE__" on line %d \n ",__LINE__);\
+abort();}\
+}
+#endif
+
+
+int RT(int a)
+{
+	return a;
+}
+void UserprintFunc(void ** m_Arr,size_t i)
+{
+	printf(" %s ",(char *)m_Arr[i]);
+}
+int main()
+{
+
+	Graph* graph = NULL;
+	std::vector<int> vector;
+	ADTErr err = ERR_OK;
+	size_t data;
+	
+	int pi[11];
+	int i;
+	/************* sanity test ****************/
+	printf ("\n=========== Unity Test For Graph Struct ==========\n\n");
+	printf ("\n=========== Sanity Tests ==========\n");
+	printf ("$ Checking GraphCreate  :");
+/*	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);
+	vector.push_back(step);*/
+
+	vector.push_back(1);
+	vector.push_back(2);
+	vector.push_back(3);
+	vector.push_back(1);
+	vector.push_back(2);
+	vector.push_back(3);
+	vector.push_back(1);
+	vector.push_back(2);
+	vector.push_back(3);
+	vector.push_back(1);
+
+	graph = GraphCreate(&vector, (uint)0);
+	graph != NULL ? printf("  pass  "):printf("  FAIL  ");
+	i=8;
+	GraphDestroy(graph);
+	graph = GraphCreate(&vector, (uint)0);
+	GraphDestroy(graph);
+	graph = NULL;
+	printf("\n");
+	printf ("$ Checking GraphJoin    :");
+	err = GraphJoin(graph, 3, 5);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+
+	graph = GraphCreate(&vector, (uint)0);
+
+	err = GraphJoin(graph, 10, 5);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoin(graph, 10, 5);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoin(graph, 5, 10);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoin(graph, 12, 25);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoin(graph, 3, 5);
+	err == ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = GraphCreate(&vector, (uint)2);
+
+	err = GraphJoin(graph, 3, 5);
+	err != ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = NULL;
+
+	printf ("\n$ Checking GraphRemove  :");
+	err = GraphRemove(graph, 3, 5);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+
+	graph = GraphCreate(&vector, (uint)2);
+	
+	err = GraphRemove(graph, 10, 5);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 10, 5);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 5, 10);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 12, 25);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 3, 3);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 3, 5);
+	err == ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = NULL;
+
+	printf ("\n$ Checking GraphJoinWT  :");
+	err = GraphJoinWT(graph, 3, 5,7);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+
+	graph = GraphCreate(&vector, (uint)2);
+
+	err = GraphJoinWT(graph, 10, 5,7);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoinWT(graph, 5, 5,7);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoinWT(graph, 5, 6,7);
+	err = GraphJoinWT(graph, 5, 6,7);
+	err == ERR_DUPLICATIONS ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphJoinWT(graph, 3, 5,0);
+	err != ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = GraphCreate(&vector, (uint)1);
+
+	err = GraphJoinWT(graph, 3, 5,7);
+	err != ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = NULL;
+	printf ("\n$ Checking GraphChangeWT:");
+	err = GraphChangeWT(graph, 3, 5,7,&data);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+
+	graph = GraphCreate(&vector, (uint)2);
+
+	err = GraphChangeWT(graph, 10, 5,7,NULL);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphChangeWT(graph, 5, 10,7,&data);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 2, 5);
+	err = GraphChangeWT(graph, 3, 5,7,&data);
+	err == ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphChangeWT(graph, 3, 5,0,&data);
+	err != ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+	GraphDestroy(graph);
+	graph = GraphCreate(&vector, (uint)1);
+
+	err = GraphChangeWT(graph, 3, 5,7,&data);
+	err != ERR_OK ? printf("  pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = NULL;
+	printf ("\n$ Checking GraphGetWT   :");
+
+	err = GraphChangeWT(graph, 3, 5,7,&data);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+
+	graph = GraphCreate(&vector, (uint)2);
+
+	err = GraphGetWT(graph, 10, 5,NULL);
+	err == ERR_NOT_INITIALIZED ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphGetWT(graph, 5, 10,&data);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphGetWT(graph, 12, 25,&data);
+	err == ERR_WRONG_INDEX ? printf("  pass  "):printf("  FAIL  ");
+	err = GraphRemove(graph, 2, 5);
+	err = GraphGetWT(graph, 2, 5,&data);
+	err == ERR_UNDERFLOW ? printf("  pass  "):printf("  FAIL  ");
+	
+	GraphDestroy(graph);
+	graph = GraphCreate(&vector, (uint)1);
+
+	err = GraphGetWT(graph, 3, 5,&data);
+	err != ERR_OK ? printf("  Pass  "):printf("  FAIL  ");
+
+	GraphDestroy(graph);
+	graph = NULL;
+	printf ("\n$ Checking PathFuncs for sanity :");
+	int errr;
+	errr = GraphDoesPathExistBFS(graph,13,3);
+	errr == 0 ? printf("  Pass  "):printf("  FAIL  ");
+	errr = GraphDoesPathExistDFS(graph,3,9);
+	errr == 0 ? printf("  Pass  "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph, 12, 1);
+	errr == 0 ? printf("  Pass  "):printf("  FAIL  ");
+	
+	
+
+
+
+	printf ("\n====================================\n");
+
+	printf ("\n\n=========== Functionality Tests ==========\n");
+	printf ("\n===== Checking with UnDirected Graph ======\n");
+	graph = GraphCreate(&vector, (uint)4);
+	for (i = 0; i < 10 ; i += 1)
+	{
+		err = GraphJoin(graph, i, 2 * i - 5);
+		err = GraphJoin(graph, i, 3 * i + 2);
+		err = GraphJoin(graph, i+5,  i - 2);
+	}
+	GraphJoin(graph,5, 3);
+	GraphRemove(graph,2,8);
+	printf ("\n$ Checking GraphIsAdjacent:");
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,3,4);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,4,3);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	
+	
+	printf ("\n$ Checking GraphRemove    :");
+	GraphRemove(graph,0,2);
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 0 ? printf(" pass "):printf("  FAIL  ");
+	GraphJoin(graph,2, 0);
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+
+	errr = GraphIsAdjacent(graph,6,2);
+	errr  == 0 ? printf(" pass "):printf("  FAIL  ");
+	GraphJoin(graph,2, 6);
+	GraphRemove(graph,2, 6);
+	errr = GraphIsAdjacent(graph,4,3);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	
+	printf ("\n$ Checking GraphDoesPathExistBFS:");
+	
+	errr = GraphDoesPathExistBFS(graph,1,4);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,1,8);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,2,6);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,4,4);
+	errr == 0 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,8,8);
+	
+	errr == 0 ? printf(" pass "):printf("  FAIL  ");
+	GraphRemove(graph,1,8);
+	errr = GraphDoesPathExistBFS(graph,1,8);
+	errr == 0 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,9,4);
+	errr == 0 ? printf(" pass "):printf("  FAIL  ");
+
+	printf ("\n$ Checking GraphDoesPathExistDFS:");
+	GraphJoin(graph,1, 8);
+	errr = GraphDoesPathExistDFS(graph,1,4);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistDFS(graph,1,8);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistDFS(graph,2,6);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistDFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistDFS(graph,4,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,8,8);
+	
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	GraphRemove(graph,1,8);
+	errr = GraphDoesPathExistDFS(graph,1,8);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,9,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	GraphDestroy(graph);
+	printf ("\n====================================\n");
+	printf ("\n===== Checking with  Directed Graph ======\n");
+	graph = GraphCreate(&vector, (uint)1);
+	for (i = 0; i < 10 ; i += 1)
+	{
+		err = GraphJoin(graph, i, 2 * i - 5);
+		err = GraphJoin(graph, i, 3 * i + 2);
+		err = GraphJoin(graph, i+5,  i - 2);
+	}
+	GraphJoin(graph,5, 3);
+	GraphJoin(graph,5, 8);
+	GraphJoin(graph,8, 5);
+	GraphJoin(graph,3, 4);
+	
+	printf ("\n$ Checking GraphIsAdjacent:");
+	errr = GraphIsAdjacent(graph,1,5);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,3,4);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,4,3);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+	
+	
+	printf ("\n$ Checking GraphRemove    :");
+	GraphRemove(graph,0,2);
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 0 ? printf(" pass "):printf("  FAIL  ");
+	GraphJoin(graph,0, 2);
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf("  FAIL  ");
+
+	errr = GraphIsAdjacent(graph,2,0);
+	errr  == 0 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphIsAdjacent(graph,4,4);
+	errr  == 0 ? printf(" pass "):printf(" FAIL ");
+	
+	printf ("\n$ Checking GraphDoesPathExistBFS:");
+	
+	errr = GraphDoesPathExistBFS(graph,1,4);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,1,5);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr= GraphDoesPathExistBFS(graph,2,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,4,3);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,8,8);
+
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,2,7);
+	errr == 0 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,7,2);
+	errr == 1 ? printf(" pass "):printf("  FAIL  ");
+	errr = GraphDoesPathExistBFS(graph,9,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,5,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+
+	printf ("\n$ Checking GraphDoesPathExistDFS:");
+	errr = GraphDoesPathExistDFS(graph,1,4);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,1,8);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,2,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,4,4);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,8,8);
+
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,2,7);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	GraphRemove(graph,1,8);
+	errr = GraphDoesPathExistDFS(graph,7,2);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,9,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,5,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+
+	printf ("\n====================================\n");
+	printf("\n\n");
+	GraphDestroy(graph);
+	printf("\n===== Checking with Weihted Graph ======\n");
+	graph = GraphCreate(&vector,(uint)3);
+	for (i = 0; i < 10 ; i += 1)
+	{
+		err = GraphJoinWT(graph, i, 2 * i - 5,8);
+		err = GraphJoinWT(graph, i, 3 * i + 2,6);
+		err = GraphJoinWT(graph, i+5,  i - 2,3);
+	}
+	GraphJoinWT(graph,5, 3,4);
+	GraphJoinWT(graph,9, 4,2);
+	GraphJoinWT(graph,2, 3,1);
+	GraphJoinWT(graph,9, 0,9);
+	printf ("\n$ Checking GraphIsAdjacent:");
+	errr = GraphIsAdjacent(graph,0,2);
+	errr  == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphIsAdjacent(graph,3,4);
+	errr  == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphIsAdjacent(graph,4,3);
+	errr  == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphIsAdjacent(graph,8,1);
+	errr  == 1 ? printf(" pass "):printf(" FAIL ");
+	printf ("\n$ Checking GraphDoesPathExistBFS:");
+	
+	errr = GraphDoesPathExistBFS(graph,1,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,1,8);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,2,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,4,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistBFS(graph,11,12);
+	
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	
+	
+	errr = GraphDoesPathExistBFS(graph,9,4);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+
+	printf ("\n$ Checking GraphDoesPathExistDFS:");
+	
+	errr = GraphDoesPathExistDFS(graph,1,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,1,8);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,2,6);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,3,3);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,4,4);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,11,67);
+	errr == 0 ? printf(" pass "):printf(" FAIL ");
+	errr = GraphDoesPathExistDFS(graph,9,4);
+	errr == 1 ? printf(" pass "):printf(" FAIL ");
+	printf ("\n====================================\n\n");
+	printf ("\n============ visual test ===========\n\n");
+	
+	printf("\n");
+	printf ("\n=============== finished tesing ===========\n\n");
+	GraphDestroy(graph);
+	
+	graph = GraphCreate(&vector,0);
+
+	/*for (i = 0; i < 10 ; i += 1)
+	{
+		err = GraphJoin(graph, i, 2 * i - 5);
+		err = GraphJoin(graph, i, 3 * i + 2);
+		err = GraphJoin(graph, i+5,  i - 2);
+	}
+	GraphJoin(graph,5, 3);
+	
+	
+	for (i = 0; i < 10; i += 1)
+	{
+		printf(" pi[%d]:%d ",i,pi[i]);
+	} 
+	printf("\n");
+	for (i = 0; i < 10; i += 1)
+	{
+		printf(" d[%d]:%d ",i,distance[i]);
+	} 
+	printf("\n");
+	GraphDestroy(graph);
+	
+	
+	graph = GraphCreate(&vector,3);
+	
+	GraphJoinWT(graph, 0,6,90);
+	GraphJoinWT(graph, 6,0,20);
+	GraphJoinWT(graph, 0,3,25);
+	GraphJoinWT(graph, 0,1,20);
+	GraphJoinWT(graph, 1,5,10);
+	GraphJoinWT(graph, 5,2,10);
+	GraphJoinWT(graph, 2,5,15);
+	GraphJoinWT(graph, 2,7,20);
+	GraphJoinWT(graph, 2,3,10);
+	GraphJoinWT(graph, 3,6,20);
+	GraphJoinWT(graph, 3,6,20);
+	GraphJoinWT(graph, 4,6,30);
+	GraphJoinWT(graph, 4,1,50);
+	
+	GraphDijkstraAlgorithm(graph,0,pi,distance);
+	for (i = 0; i < 8; i += 1)
+	{
+		printf(" pi[%d]:%d ",i,pi[i]);
+	} 
+	printf("\n");
+	for (i = 0; i < 8; i += 1)
+	{
+		printf(" d[%d]:%d ",i,distance[i]);
+	} 
+	i = CONCAT(R,T)(6);
+	printf("\nCONCAT(R,T):%d\n",i);
+	GraphDestroy(graph);
+	return 0;*/
+}

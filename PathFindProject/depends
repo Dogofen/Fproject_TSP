@@ -1,0 +1,4 @@
+geneticpathfind.o: geneticpathfind.cpp ../Ainclude/path.hpp \
+ ../Ainclude/graph.h ../Ainclude/path.hpp ../Ainclude/ADTDefs.h
+pathUtils.o: pathUtils.cpp ../Ainclude/path.hpp
+bmp.o: bmp.cpp ../Ainclude/path.hpp

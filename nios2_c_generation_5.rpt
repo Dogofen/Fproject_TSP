@@ -1,0 +1,256 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/home/pcmonkey/projects/nios2/ --output-directory=/home/pcmonkey/projects/nios2/nios2_c/ --report-file=bsf:/home/pcmonkey/projects/nios2/nios2_c.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGXFC5C6F27C6 --system-info=DEVICE_SPEEDGRADE=6_H6 --component-file=/home/pcmonkey/projects/nios2/nios2_c.qsys
+Progress: Loading nios2/nios2_c.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.1]
+Progress: Parameterizing module clk_0
+Progress: Adding cpu [altera_nios2_qsys 13.1]
+Progress: Parameterizing module cpu
+Progress: Adding tightly_coupled_instruction_memory [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module tightly_coupled_instruction_memory
+Progress: Adding pll_100 [altera_pll 13.1]
+Progress: Parameterizing module pll_100
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 13.1]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding mm_clock_crossing_bridge_0 [altera_avalon_mm_clock_crossing_bridge 13.1]
+Progress: Parameterizing module mm_clock_crossing_bridge_0
+Progress: Adding tightly_coupled_data_memory [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module tightly_coupled_data_memory
+Progress: Adding key [altera_avalon_pio 13.1]
+Progress: Parameterizing module key
+Progress: Adding timer_0 [altera_avalon_timer 13.1]
+Progress: Parameterizing module timer_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nios2_c.pll_100: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: nios2_c.pll_100: Able to implement PLL with user settings
+Info: nios2_c.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: nios2_c.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Info: nios2_c.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/home/pcmonkey/projects/nios2/ --output-directory=/home/pcmonkey/projects/nios2/nios2_c/synthesis/ --file-set=QUARTUS_SYNTH --report-file=html:/home/pcmonkey/projects/nios2/nios2_c.html --report-file=sopcinfo:/home/pcmonkey/projects/nios2/nios2_c.sopcinfo --report-file=cmp:/home/pcmonkey/projects/nios2/nios2_c.cmp --report-file=qip:/home/pcmonkey/projects/nios2/nios2_c/synthesis/nios2_c.qip --report-file=svd --report-file=regmap:/home/pcmonkey/projects/nios2/nios2_c/synthesis/nios2_c.regmap --report-file=debuginfo:/home/pcmonkey/projects/nios2/nios2_c/synthesis/nios2_c.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGXFC5C6F27C6 --system-info=DEVICE_SPEEDGRADE=6_H6 --component-file=/home/pcmonkey/projects/nios2/nios2_c.qsys --language=VHDL
+Progress: Loading nios2/nios2_c.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.1]
+Progress: Parameterizing module clk_0
+Progress: Adding cpu [altera_nios2_qsys 13.1]
+Progress: Parameterizing module cpu
+Progress: Adding tightly_coupled_instruction_memory [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module tightly_coupled_instruction_memory
+Progress: Adding pll_100 [altera_pll 13.1]
+Progress: Parameterizing module pll_100
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 13.1]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding mm_clock_crossing_bridge_0 [altera_avalon_mm_clock_crossing_bridge 13.1]
+Progress: Parameterizing module mm_clock_crossing_bridge_0
+Progress: Adding tightly_coupled_data_memory [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module tightly_coupled_data_memory
+Progress: Adding key [altera_avalon_pio 13.1]
+Progress: Parameterizing module key
+Progress: Adding timer_0 [altera_avalon_timer 13.1]
+Progress: Parameterizing module timer_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nios2_c.pll_100: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: nios2_c.pll_100: Able to implement PLL with user settings
+Info: nios2_c.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: nios2_c.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Info: nios2_c.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_c: Generating nios2_c "nios2_c" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 10 modules, 43 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 7 modules, 20 connections
+Info: merlin_translator_transform: After transform: 14 modules, 46 connections
+Info: merlin_domain_transform: After transform: 28 modules, 130 connections
+Info: merlin_router_transform: After transform: 35 modules, 156 connections
+Info: merlin_traffic_limiter_transform: After transform: 37 modules, 166 connections
+Info: merlin_network_to_switch_transform: After transform: 50 modules, 199 connections
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src2 and cmd_xbar_mux_002.sink0
+Info: Inserting clock-crossing logic between rsp_xbar_demux_002.src0 and rsp_xbar_mux_001.sink2
+Info: com_altera_sopcmodel_transforms_avalon_ClockCrossingTransform: After transform: 52 modules, 213 connections
+Info: limiter_update_transform: After transform: 52 modules, 215 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 57 modules, 272 connections
+Info: merlin_hierarchy_transform: After transform: 11 modules, 50 connections
+Info: merlin_initial_interconnect_transform: After transform: 6 modules, 9 connections
+Info: merlin_translator_transform: After transform: 9 modules, 19 connections
+Info: merlin_domain_transform: After transform: 16 modules, 53 connections
+Info: merlin_router_transform: After transform: 19 modules, 63 connections
+Info: merlin_traffic_limiter_transform: After transform: 20 modules, 68 connections
+Info: merlin_network_to_switch_transform: After transform: 25 modules, 79 connections
+Info: Inserting clock-crossing logic between cmd_xbar_demux.src1 and cmd_xbar_mux_001.sink0
+Info: Inserting clock-crossing logic between rsp_xbar_demux_001.src0 and rsp_xbar_mux.sink1
+Info: com_altera_sopcmodel_transforms_avalon_ClockCrossingTransform: After transform: 27 modules, 91 connections
+Info: limiter_update_transform: After transform: 27 modules, 92 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 32 modules, 123 connections
+Info: merlin_hierarchy_transform: After transform: 12 modules, 57 connections
+Info: merlin_initial_interconnect_transform: After transform: 4 modules, 7 connections
+Info: merlin_translator_transform: After transform: 6 modules, 15 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 8 modules, 21 connections
+Info: merlin_hierarchy_transform: After transform: 13 modules, 61 connections
+Info: merlin_initial_interconnect_transform: After transform: 4 modules, 7 connections
+Info: merlin_translator_transform: After transform: 6 modules, 15 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 8 modules, 21 connections
+Info: merlin_hierarchy_transform: After transform: 14 modules, 65 connections
+Info: merlin_mm_transform: After transform: 14 modules, 65 connections
+Info: merlin_interrupt_mapper_transform: After transform: 15 modules, 69 connections
+Info: merlin_interrupt_sync_transform: After transform: 16 modules, 75 connections
+Info: reset_adaptation_transform: After transform: 22 modules, 83 connections
+Info: cpu: Starting RTL generation for module 'nios2_c_cpu'
+Info: cpu:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux/eperlcmd -I /home/pcmonkey/altera/13.1/quartus/linux/perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=nios2_c_cpu --dir=/tmp/alt6177_970579999061455544.dir/0001_cpu_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0001_cpu_gen//nios2_c_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2014.04.17 22:15:03 (*) Starting Nios II generation
+Info: cpu: # 2014.04.17 22:15:03 (*)   Checking for plaintext license.
+Info: cpu: # 2014.04.17 22:15:10 (*)   Couldn't query license setup in Quartus directory /home/pcmonkey/altera/13.1/quartus
+Info: cpu: # 2014.04.17 22:15:10 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2014.04.17 22:15:10 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2014.04.17 22:15:10 (*)   Plaintext license not found.
+Info: cpu: # 2014.04.17 22:15:10 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2014.04.17 22:15:13 (*)   Couldn't query license setup in Quartus directory /home/pcmonkey/altera/13.1/quartus
+Info: cpu: # 2014.04.17 22:15:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2014.04.17 22:15:13 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2014.04.17 22:15:13 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: cpu: # 2014.04.17 22:15:13 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2014.04.17 22:15:13 (*)   Creating all objects for CPU
+Info: cpu: # 2014.04.17 22:15:13 (*)     Testbench
+Info: cpu: # 2014.04.17 22:15:13 (*)     Instruction decoding
+Info: cpu: # 2014.04.17 22:15:13 (*)       Instruction fields
+Info: cpu: # 2014.04.17 22:15:13 (*)       Instruction decodes
+Info: cpu: # 2014.04.17 22:15:14 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2014.04.17 22:15:14 (*)       Instruction controls
+Info: cpu: # 2014.04.17 22:15:14 (*)     Pipeline frontend
+Info: cpu: # 2014.04.17 22:15:15 (*)     Pipeline backend
+Info: cpu: # 2014.04.17 22:15:15 (*)   Master tightly_coupled_data_master_0 address range (0x40000, 0x44e1f) overlaps with master data_master address range (0x20000, 0x1ffffff)
+Info: cpu: # 2014.04.17 22:15:15 (*)   Master data_master address range (0x20000, 0x1ffffff) overlaps with master tightly_coupled_data_master_0 address range (0x40000, 0x44e1f)
+Info: cpu: # 2014.04.17 22:15:15 (*)   Generating non-optimal tightly-coupled master logic due to overlap
+Info: cpu: # 2014.04.17 22:15:19 (*)   Generating RTL from CPU objects
+Info: cpu: # 2014.04.17 22:15:24 (*)   Creating encrypted RTL
+Info: cpu: # 2014.04.17 22:15:26 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'nios2_c_cpu'
+Info: cpu: "nios2_c" instantiated altera_nios2_qsys "cpu"
+Info: tightly_coupled_instruction_memory: Starting RTL generation for module 'nios2_c_tightly_coupled_instruction_memory'
+Info: tightly_coupled_instruction_memory:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux/perl/bin/perl -I /home/pcmonkey/altera/13.1/quartus/linux/perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=nios2_c_tightly_coupled_instruction_memory --dir=/tmp/alt6177_970579999061455544.dir/0002_tightly_coupled_instruction_memory_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0002_tightly_coupled_instruction_memory_gen//nios2_c_tightly_coupled_instruction_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: tightly_coupled_instruction_memory: Done RTL generation for module 'nios2_c_tightly_coupled_instruction_memory'
+Info: tightly_coupled_instruction_memory: "nios2_c" instantiated altera_avalon_onchip_memory2 "tightly_coupled_instruction_memory"
+Info: pll_100: "nios2_c" instantiated altera_pll "pll_100"
+Info: jtag_uart: Starting RTL generation for module 'nios2_c_jtag_uart'
+Info: jtag_uart:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux/perl/bin/perl -I /home/pcmonkey/altera/13.1/quartus/linux/perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=nios2_c_jtag_uart --dir=/tmp/alt6177_970579999061455544.dir/0004_jtag_uart_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0004_jtag_uart_gen//nios2_c_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'nios2_c_jtag_uart'
+Info: jtag_uart: "nios2_c" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: sysid_qsys_0: "nios2_c" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
+Info: mm_clock_crossing_bridge_0: "nios2_c" instantiated altera_avalon_mm_clock_crossing_bridge "mm_clock_crossing_bridge_0"
+Info: tightly_coupled_data_memory: Starting RTL generation for module 'nios2_c_tightly_coupled_data_memory'
+Info: tightly_coupled_data_memory:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux/perl/bin/perl -I /home/pcmonkey/altera/13.1/quartus/linux/perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=nios2_c_tightly_coupled_data_memory --dir=/tmp/alt6177_970579999061455544.dir/0006_tightly_coupled_data_memory_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0006_tightly_coupled_data_memory_gen//nios2_c_tightly_coupled_data_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: tightly_coupled_data_memory: Done RTL generation for module 'nios2_c_tightly_coupled_data_memory'
+Info: tightly_coupled_data_memory: "nios2_c" instantiated altera_avalon_onchip_memory2 "tightly_coupled_data_memory"
+Info: key: Starting RTL generation for module 'nios2_c_key'
+Info: key:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux/perl/bin/perl -I /home/pcmonkey/altera/13.1/quartus/linux/perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_c_key --dir=/tmp/alt6177_970579999061455544.dir/0007_key_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0007_key_gen//nios2_c_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key: Done RTL generation for module 'nios2_c_key'
+Info: key: "nios2_c" instantiated altera_avalon_pio "key"
+Info: timer_0: Starting RTL generation for module 'nios2_c_timer_0'
+Info: timer_0:   Generation command is [exec /home/pcmonkey/altera/13.1/quartus/linux//perl/bin/perl -I /home/pcmonkey/altera/13.1/quartus/linux//perl/lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/europa -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/pcmonkey/altera/13.1/quartus/sopc_builder/bin -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- /home/pcmonkey/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=nios2_c_timer_0 --dir=/tmp/alt6177_970579999061455544.dir/0008_timer_0_gen/ --quartus_dir=/home/pcmonkey/altera/13.1/quartus --verilog --config=/tmp/alt6177_970579999061455544.dir/0008_timer_0_gen//nios2_c_timer_0_component_configuration.pl  --do_build_sim=0  ]
+Info: timer_0: Done RTL generation for module 'nios2_c_timer_0'
+Info: timer_0: "nios2_c" instantiated altera_avalon_timer "timer_0"
+Info: pipeline_bridge_swap_transform: After transform: 50 modules, 163 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 50 modules, 163 connections
+Info: mm_interconnect_0: "nios2_c" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_0"
+Info: pipeline_bridge_swap_transform: After transform: 26 modules, 77 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 26 modules, 77 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 26 modules, 77 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 26 modules, 77 connections
+Info: mm_interconnect_1: "nios2_c" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_1"
+Info: pipeline_bridge_swap_transform: After transform: 4 modules, 6 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 4 modules, 6 connections
+Info: mm_interconnect_2: "nios2_c" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_2"
+Info: pipeline_bridge_swap_transform: After transform: 4 modules, 6 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 4 modules, 6 connections
+Info: mm_interconnect_3: "nios2_c" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_3"
+Info: irq_mapper: "nios2_c" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_synchronizer: "nios2_c" instantiated altera_irq_clock_crosser "irq_synchronizer"
+Info: rst_controller: "nios2_c" instantiated altera_reset_controller "rst_controller"
+Info: cpu_instruction_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "cpu_instruction_master_translator"
+Info: cpu_jtag_debug_module_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "cpu_jtag_debug_module_translator"
+Info: cpu_instruction_master_translator_avalon_universal_master_0_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "cpu_instruction_master_translator_avalon_universal_master_0_agent"
+Info: cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent"
+Info: cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "mm_interconnect_0" instantiated altera_merlin_router "addr_router"
+Info: addr_router_001: "mm_interconnect_0" instantiated altera_merlin_router "addr_router_001"
+Info: id_router: "mm_interconnect_0" instantiated altera_merlin_router "id_router"
+Info: id_router_002: "mm_interconnect_0" instantiated altera_merlin_router "id_router_002"
+Info: id_router_003: "mm_interconnect_0" instantiated altera_merlin_router "id_router_003"
+Info: limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "limiter"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: cmd_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_xbar_demux_001"
+Info: cmd_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: cmd_xbar_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux_002"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_xbar_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux_003"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_002"
+Info: rsp_xbar_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_003"
+Info: rsp_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: addr_router: "mm_interconnect_1" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_1" instantiated altera_merlin_router "id_router"
+Info: id_router_001: "mm_interconnect_1" instantiated altera_merlin_router "id_router_001"
+Info: cmd_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_xbar_mux_001: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_xbar_mux_001"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_demux_001: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_001"
+Info: rsp_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file /home/pcmonkey/projects/nios2/nios2_c/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: nios2_c: Done "nios2_c" with 48 modules, 78 files, 2046227 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

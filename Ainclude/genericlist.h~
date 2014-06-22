@@ -1,0 +1,56 @@
+#ifndef __GENRICLIST_H__
+#define __GENERICLIST_H__
+
+typedef struct _List List;
+typedef void* ListItr;
+
+/*error is when itr is pointing to list tail member*/
+
+typedef void* Data;
+typedef void* Param;
+typedef int	(*DataComp)(Data,Data);	/*0 if equal*/
+typedef int	(*IsMatch)(Data,Data);	/*0=success*/
+typedef int	(*DoFunc)(Data,Param);
+typedef void	(*PrintFunc)(Data data);/*users print function defined in main.c */
+
+/*general list API*/
+
+List*	ListCreate();
+void	ListDestroy(List* _list);
+
+ListItr	ListPushHead(List* _list, Data _data);
+ListItr	ListPushTail(List* _list, Data _data);
+
+Data	ListPopHead(List* _list);
+Data	ListPopTail(List* _list);
+
+size_t	ListCountItems(List* _list);
+int	    ListIsEmpty(List* _list);
+void	ListPrint(List* _list,PrintFunc Printer);
+
+/*iterator API*/
+
+ListItr	ListBegin(List* _list);
+ListItr	ListEnd(List* _list);
+ListItr	ListNext(ListItr _listItr);
+ListItr	ListPrev(ListItr _listItr);
+Data	ListGetData(ListItr _listItr);
+int     ListIsSame(ListItr _listItr1,ListItr _listItr2);
+
+/*List insert [before] and return ListItr to new*/
+
+ListItr	ListInsert(ListItr _listItr, Data _data);
+Data	ListRemove(ListItr _listItr);
+
+/*
+return listItr to the first item in list for which _cmp(list_data,argument_data) returns 0,
+not including _to, be carfull not to get to the end*/
+ListItr	ListFindFirst(ListItr _from, ListItr _to, DataComp _cmp, Data _data);
+
+/*
+perform specified function _do(Data, Param) for each item in the collection untill error is returned from the _do function or untill the function reaches the end, not including _to, be carfull not to get to the end*/
+
+int		ListForEach(ListItr _from, ListItr _to, DoFunc _do, Param _param);
+
+#endif
+

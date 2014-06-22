@@ -1,0 +1,35 @@
+/*
+ * utils.c
+ *
+ *  Created on: Apr 16, 2014
+ *      Author: root
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int* CrArray()
+{
+	FILE* btd;
+	int size=0;
+	int* dist;
+
+	btd = fopen("/home/pcmonkey/projects/nios2/software/final/inbox.tour.txt","r");
+	fscanf(btd,"%d",&size);
+	dist = (int*)malloc((size*size+1)*sizeof(int));
+	fclose(btd);
+	return dist;
+}
+void FillArray(int* _tmp,char* name)
+{
+	FILE* btd;
+	int i=0;
+	btd = fopen(name,"r");
+	fscanf(btd,"%d",&_tmp[i]);
+	while(_tmp[i] !=999)
+	{
+		++i;
+		fscanf(btd,"%d",&_tmp[i]);
+	}
+	fclose(btd);
+}
+

@@ -1,0 +1,157 @@
+#include "path.hpp"
+#include <cstdlib>
+using namespace path;
+
+Stream::Stream(const char* str,bool io,fstream& pf):m_pFile(pf)
+{
+	io == 1 ? m_pFile.open(str,std::fstream::in):m_pFile.open(str,std::fstream::out);
+}
+Stream::~Stream()
+{
+	m_pFile.close();
+}
+BitMap::BitMap()
+{
+    m_index = new Index*[SIZEH+1];
+    for (int i = 0; i <= SIZEH; ++i)
+    {
+        m_index[i] = new Index[SIZEW];
+    }
+}
+bool BitMap::IsBlack(Step* step)
+{
+	return (this->RetPix(*step).m_data[BLUE] == 0) &&  this->RetPix(*step).m_data[GREEN] == 0 &&  this->RetPix(*step).m_data[RED] == 1 ? true:false;
+}
+BitMap::~BitMap()
+{
+    for (int i = 0; i <= SIZEH; ++i)
+    {
+		delete m_index[i];
+    }
+	delete m_index;
+}
+inline bool DoubleCorners(Step* corners,Step* step,int flag)
+{	
+	for (int i = 0; i < flag; ++i)
+	{
+		if(corners[i].HASmember(step[4]) )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+void BitMap:: ReadBmp(const char* str)
+{
+    int i,j,tmp=0,counter=0,lastj=0,flag=0,dcounter=0,dlastj=0,dflag=0,bcounter=0,blastj=0;
+	std::ifstream image;
+	Step step[RAD+1],dstep[RAD+1],bstep[RAD+1];
+
+	image.open(str,std::ios::binary);
+	image.readsome((char*)HEADER,BMPHEADER);
+    for (i = 0; i < SIZEH ; ++i)
+    {
+        for (j = 0; j < SIZEW; ++j)
+        {
+			for (int c = 0; c < PixNum; ++c)
+			{
+				tmp = 0;
+				image.read( (char*)&tmp,1);
+				m_index[i][j].m_pixel.m_data[c] = tmp;
+			}
+			if(m_index[i][j].m_pixel.IsCorner() )
+			{
+				if(counter == RAD )
+				{
+					if(!DoubleCorners(m_corners,step,flag) )
+					{
+						++flag;
+						m_corners[flag-1] = step[RAD/2];
+						m_corners[flag-1].id = flag;
+						counter = 0;
+					}
+				}
+				if(!(lastj+1 == j))
+				{
+					counter = 0;
+				}
+				step[counter].insert(i,j);
+				lastj = j;
+				++counter;
+			}
+			if(m_index[i][j].m_pixel.IsDest() )
+			{
+				if(dcounter == RAD-2)
+				{
+					if(!DoubleCorners(m_Dest,dstep,dflag) )
+					{
+						++dflag;
+						m_Dest[dflag-1] = dstep[RAD/2];
+						m_Dest[dflag-1].id=dflag;
+						dcounter = 0;
+					}
+				}
+				if(!(dlastj+1 == j))
+				{ 
+					dcounter = 0;
+				}
+				dstep[dcounter].insert(i,j);
+				dlastj = j;
+				++dcounter;
+			}
+			if(m_index[i][j].m_pixel.IsBegin() && bcounter != -1 )
+			{
+				if(bcounter == RAD-1 )
+				{
+					m_begin = bstep[RAD/2];
+					m_begin.id=0;
+					bcounter = -1;
+				}
+				if(!(blastj+1 == j))
+				{ 
+					bcounter = 0;
+				}
+				bstep[bcounter].insert(i,j);
+				blastj = j;
+				++bcounter;
+			}
+		}
+    }
+	for (int i = flag; i > 0; --i)
+	{
+		m_corners[i-1].id += dflag;
+	}
+    image.close();
+}
+void BitMap:: CreateImage(const char* stringimage)
+{
+	std::ofstream image;
+    int i,j;
+
+	image.open(stringimage,std::ios::binary);
+	image.write((char*)HEADER,BMPHEADER);
+	for (i = 0; i < SIZEH ; ++i)
+	{
+        for (j = 0; j < SIZEW ; ++j)
+        {
+			for (int c = 0; c < PixNum; ++c)
+			{
+				image.write((char*)&m_index[i][j].m_pixel.m_data[c],1);
+			}
+		}
+	}
+    image.close();
+}
+
+Index& BitMap::RetIndex(int i,int j)
+{
+	Step tmp;
+	tmp.insert(i,j);
+
+	return tmp.valid() ? m_index[i][j]:m_index[0][0];
+}
+Pixel& BitMap::RetPix(Step& step)
+{
+
+	return m_index[step[0]][step[1]].m_pixel;
+}

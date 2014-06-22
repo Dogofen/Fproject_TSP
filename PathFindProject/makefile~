@@ -1,0 +1,10 @@
+SRC=geneticpathfind.cpp pathUtils.cpp bmp.cpp
+INCDIR=-I ../Ainclude/
+OUT=primegenetic.o
+LFLAGS+=g++ $(INCDIR) -std=c+xx 
+AR=../Alib/libcontainer.a -o ./path.o
+CC=g++
+include depends
+include ../basemake
+run:
+	./$(OUT)

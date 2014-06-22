@@ -1,0 +1,131 @@
+/*
+ * "Hello World" example.
+ *
+ * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
+ * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
+ * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
+ * device in your system's hardware.
+ * The memory footprint of this hosted application is ~69 kbytes by default
+ * using the standard reference design.
+ *
+ * For a reduced footprint version of this template, and an explanation of how
+ * to reduce the memory footprint for a given application, see the
+ * "small_hello_world" template.
+ *
+ */
+#define MAN(x) if(x==0) Menu1(); if(x==1) Menu2(); if(x==2) Menu3();if(x==3) Menu4();
+#include <stdio.h>
+//#include <stdlib.h>
+#include "unistd.h"
+//#include "utils.h"
+#include "altera_avalon_pio_regs.h"
+//#include "alt_types.h"
+#include "system.h"
+//#include "sys/alt_flash.h"
+//#include "sys/alt_flash_types.h"
+//#include "sys/alt_irq.h"  // interrupt
+//#include "sys/alt_alarm.h" // time tick function (alt_nticks(), alt_ticks_per_second())
+//#include "sys/alt_timestamp.h"
+//#include "sys/alt_stdio.h"
+//#include <fcntl.h>
+
+void Menu1()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"					-->	1.read about this application\n"
+							"						2.view maps\n"
+							"						3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu2()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"					-->	2.view maps\n"
+							"						3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu3()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"						2.view maps\n"
+							"					-->	3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu4()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"						2.view maps\n"
+							"						3.calculate path\n"
+							"					-->	4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MainMenu()
+{
+	int i=0;
+	int num=0;
+	Menu1();
+	while (i<1)
+		{
+			while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x07) == 0x07) );
+
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
+				{
+					num=(num+1)%4;
+					MAN(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x02) == 0x02))
+				{
+					num=(num+3)%4;
+					MAN(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x04) == 0x04))
+				{
+					switch(num)
+					{
+						case 0:
+							//fprintf(pf,"100\n");
+							break;
+						default:
+							printf("h");
+							break;
+					}
+				}
+			usleep(600*1000);
+
+			++i;
+		}
+}
+int main()
+{
+	FILE* pf;
+	//pf= fopen("/mnt/host/inbox.log","w");
+	MainMenu();
+
+
+	fclose(pf);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+			"BYE BYE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+  return 0;
+}

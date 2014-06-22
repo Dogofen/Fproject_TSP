@@ -1,0 +1,46 @@
+#ifndef __GENETIC_HPP__
+#define __GENETIC_HPP__
+
+#include <iostream>
+#include <fstream>
+
+#define PixNum 1
+#define SIZEW 741
+#define SIZEH 398
+#define Header (SIZEW-18)
+#define MUTnum 8
+#define INT 24
+#define BYTE 8
+#define RAD 10000
+#define SRAD sqrt(RAD)
+enum Colors {BLUE,GREEN,RED };
+typedef unsigned int uint;
+using std::fstream;
+
+class Pixel
+{
+public:
+	int m_data;
+	float m_fitness;
+public:
+	void Birth(Pixel&);
+	void copy (Pixel&);
+	friend class BirthtMap;
+};
+struct Index
+{
+	Pixel m_pixel[3];
+	bool alive;
+};
+class Stream
+{
+private:
+	fstream& m_pFile;
+public:
+	Stream (const char*,bool,fstream&);
+   ~Stream ();
+	operator fstream& ()const{return m_pFile;}
+	bool IsValid();
+};
+void BinCompare(Pixel& p,Pixel& pfit);
+#endif
