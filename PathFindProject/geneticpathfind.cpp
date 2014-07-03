@@ -180,20 +180,26 @@ void Generate(BitMap* map,BitMap* another)
 		firstroute = firstroute.m_dist < secondroute.m_dist ? firstroute:secondroute;
 		--counter;
 	}
-	cout<<"the Route chosen is : ";
+	std::ofstream ofs;
+	std::ofstream outfile ("/home/pcmonkey/fff/software/final_tsp/dist.txt",std::ofstream::out);
+	ofs.open ("/home/pcmonkey/fff/software/final_tsp/out.txt", std::ofstream::out);
+	ofs<<"the Route chosen is : ";
 	firstroute.Print();
 	for (uint i = 0; i < map->TourSize-1; i++)
 	{
-		cout<<"from:"<<firstroute.via[i]<<" to:"<<firstroute.via[i+1]<<" distance:"<<dist[firstroute.via[i]][firstroute.via[i+1]]<<endl;
+		ofs<<"from:"<<firstroute.via[i]<<" to:"<<firstroute.via[i+1]<<" distance:"<<dist[firstroute.via[i]][firstroute.via[i+1]]<<endl;
 		counter = i+1;
 		PrintRoute(another,vector,firstroute.via[i],firstroute.via[i+1],via );
 	}
-	cout<<"total distance covered:"<<firstroute.m_dist<<endl;
+	ofs<<"total distance covered:"<<firstroute.m_dist<<endl;
+	outfile<<firstroute.m_dist;
 	for (uint i = 0; i < map->TourSize; i++) 
 	{
 		delete dist[i];
 		delete via[i] ;
 	}
+	ofs.close();
+	outfile.close();
 	delete dist;
 	delete via;
 	GraphDestroy(graph);

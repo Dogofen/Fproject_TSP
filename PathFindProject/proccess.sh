@@ -12,7 +12,7 @@ echo $IMAGE
 ./path.o $IMAGE
 echo $IMAGE
 IM=${IMAGE:0:4}Pfig.bmp
-display +borderwidth -backdrop  ./PathFindProject/$IM &
+display +borderwidth -backdrop  /home/pcmonkey/fff/PathFindProject/$IM &
 
 
 

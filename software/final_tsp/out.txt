@@ -1,0 +1,5 @@
+the Route chosen is : from:0 to:2 distance:95
+from:2 to:3 distance:82
+from:3 to:4 distance:84
+from:4 to:1 distance:109
+total distance covered:370

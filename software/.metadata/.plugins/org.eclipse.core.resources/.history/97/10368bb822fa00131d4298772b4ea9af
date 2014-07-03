@@ -1,0 +1,385 @@
+#define MAN(x) if(x==0) Menu1(); if(x==1) Menu2(); if(x==2) Menu3();if(x==3) Menu4();
+#define MAP(x) if(x==0) MapMenu1(); if(x==1) MapMenu2(); if(x==2) MapMenu3();if(x==3) MapMenu4();if(x==4) MapMenu5();if(x==5) MapMenu6();if(x==6) MapMenu7();
+#include <stdio.h>
+//#include <stdlib.h>
+#include "unistd.h"
+//#include "utils.h"
+#include "altera_avalon_pio_regs.h"
+//#include "alt_types.h"
+#include "system.h"
+#include "nios2.h"
+//#include "sys/alt_flash.h"
+//#include "sys/alt_flash_types.h"
+//#include "sys/alt_irq.h"  // interrupt
+//#include "sys/alt_alarm.h" // time tick function (alt_nticks(), alt_ticks_per_second())
+//#include "sys/alt_timestamp.h"
+//#include "sys/alt_stdio.h"
+//#include <fcntl.h>
+void About()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+			"					Short Description\n					~~~~~~~~~~~~~~~~~~~~\n"
+			"			this app uses image processing algorithms \n"
+			"			in order to extract data from an Image file ( BMP ) and process \n"
+			"			it using two different main algorithms Genetic Algorithm(GA) and \n"
+			"			Dijkstra's Path Finding Algorithm  ( DPF ) The purpose of this application\n"
+			"			is to suggest a solution to the 'travelling salesman problem' via\n"
+			"			cyclon V altera FPGA. a Bmp file is used as an only given input \n"
+			"			to the application.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+void Menu1()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x01);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"					-->	1.read about this application\n"
+							"						2.view maps\n"
+							"						3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu2()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x02);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"					-->	2.view maps\n"
+							"						3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu3()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x04);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"						2.view maps\n"
+							"					-->	3.calculate path\n"
+							"						4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void Menu4()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x08);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"\n"
+							"				select the action you would like:\n"
+							"\n"
+							"						1.read about this application\n"
+							"						2.view maps\n"
+							"						3.calculate path\n"
+							"					-->	4.exit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu1()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x01);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"					-->	1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu2()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x02);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"					-->	2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu3()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x04);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"					-->	3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu4()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x08);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"					-->	4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu5()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x10);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"					-->	5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu6()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x50);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"					-->	6.Map6 (big)\n"
+							"						7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MapMenu7()
+{
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x98);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					printf("				Choose from the List Of the Available Maps!\n"
+							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+							"						1.Map1 (small)\n"
+							"						2.Map2 (small)\n"
+							"						3.Map3 (medium)\n"
+							"						4.Map4 (medium)\n"
+							"						5.Map5 (medium)\n"
+							"						6.Map6 (big)\n"
+							"					-->	7.return\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	);
+}
+void MainMap()
+{
+	int i=0;
+	FILE* pf;
+	int num=0;
+	usleep(600*1000);
+	MapMenu1();
+	while (i<40)
+		{
+			while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x0f) == 0x0f) );
+
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
+				{
+					num=(num+1)%7;
+					MAP(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x02) == 0x02))
+				{
+					num=(num+6)%7;
+					MAP(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x04) == 0x04))
+				{
+					switch(num)
+					{
+						case 0:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"1",1);
+							fclose(pf);
+							break;
+						case 1:
+							pf= fopen("/mnt/host/inbox.txt","w");
+						    fprintf(pf,"2",1);
+						    fclose(pf);
+						    break;
+						case 2:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"3",1);
+							fclose(pf);
+							break;
+						case 3:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"4",1);
+							fclose(pf);
+							break;
+						case 4:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"5",1);
+							fclose(pf);
+							break;
+						case 5:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"6",1);
+							fclose(pf);
+							break;
+						default:
+							return;
+					}
+				}
+			if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x08) == 0x08))
+			{
+				pf= fopen("/mnt/host/inbox.txt","w");
+				fprintf(pf,"-1",1);
+				fclose(pf);
+			}
+			usleep(600*1000);
+
+			++i;
+		}
+}
+void MainCalc()
+{
+	int i=0;
+	FILE* pf;
+	int num=0;
+	usleep(600*1000);
+	MapMenu1();
+	while (i<40)
+		{
+			while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x0f) == 0x0f) );
+
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
+				{
+					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0x01);
+					num=(num+1)%7;
+					MAP(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x02) == 0x02))
+				{
+					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0x02);
+					num=(num+6)%7;
+					MAP(num);
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x04) == 0x04))
+				{
+					char dist[6];
+					switch(num)
+					{
+						case 0:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"11",1);
+							fclose(pf);
+							pf= fopen("/mnt/host/dist.txt","r");
+							fgets(pf,dist,4);
+							printf("yes %s",dist);
+							fclose(pf);
+							break;
+						case 1:
+							pf= fopen("/mnt/host/inbox.txt","w");
+						    fprintf(pf,"22",1);
+						    fclose(pf);
+						    break;
+						case 2:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"33",1);
+							fclose(pf);
+							break;
+						case 3:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"44",1);
+							fclose(pf);
+							break;
+						case 4:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"55",1);
+							fclose(pf);
+							break;
+						case 5:
+							pf= fopen("/mnt/host/inbox.txt","w");
+							fprintf(pf,"66",1);
+							fclose(pf);
+							break;
+						default:
+							return;
+					}
+				}
+			if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x08) == 0x08))
+			{
+				pf= fopen("/mnt/host/inbox.txt","w");
+				fprintf(pf,"-1",1);
+				fclose(pf);
+			}
+			usleep(600*1000);
+
+			++i;
+		}
+}
+void MainMenu()
+{
+	int i=0;
+	FILE* pf;
+	int num=0;
+	IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE, 0x00);
+	Menu1();
+	while (i<20)
+		{
+			while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x07) == 0x07) );
+
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
+				{
+					num=(num+1)%4;
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x02) == 0x02))
+				{
+					num=(num+3)%4;
+				}
+				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x04) == 0x04))
+				{
+					switch(num)
+					{
+						case 0:
+							About();
+							usleep(600*1000);
+							while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x07) == 0x07) );
+							break;
+						case 1:
+							MainMap();
+							usleep(600*1000);
+							break;
+						case 2:
+							MainCalc();
+							break;
+						default:
+							return;
+					}
+				}
+				MAN(num);
+			usleep(600*1000);
+
+			++i;
+		}
+}
+int main()
+{
+	MainMenu();
+
+
+
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+			"				BYE BYE!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+  return 0;
+}

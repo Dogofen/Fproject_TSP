@@ -29,6 +29,7 @@ void About()
 }
 void Menu1()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x01);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -42,6 +43,7 @@ void Menu1()
 }
 void Menu2()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x02);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -55,6 +57,7 @@ void Menu2()
 }
 void Menu3()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x04);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -68,6 +71,7 @@ void Menu3()
 }
 void Menu4()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x08);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Welcome to the 'TSP' Via Altera NiosII Processor!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -81,6 +85,7 @@ void Menu4()
 }
 void MapMenu1()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x01);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -94,6 +99,7 @@ void MapMenu1()
 }
 void MapMenu2()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x02);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -107,6 +113,7 @@ void MapMenu2()
 }
 void MapMenu3()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x04);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -120,6 +127,7 @@ void MapMenu3()
 }
 void MapMenu4()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x08);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -133,6 +141,7 @@ void MapMenu4()
 }
 void MapMenu5()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x10);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -146,6 +155,7 @@ void MapMenu5()
 }
 void MapMenu6()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x50);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -159,6 +169,7 @@ void MapMenu6()
 }
 void MapMenu7()
 {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0x98);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					printf("				Choose from the List Of the Available Maps!\n"
 							"				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -183,6 +194,10 @@ void MainMap()
 
 				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
 				{
+					pf= fopen("/mnt/host/inbox.txt","w");
+					IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,0x00);
+					fprintf(pf,"-1",1);
+					fclose(pf);
 					num=(num+1)%7;
 					MAP(num);
 				}
@@ -232,6 +247,7 @@ void MainMap()
 			if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x08) == 0x08))
 			{
 				pf= fopen("/mnt/host/inbox.txt","w");
+				IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,0x00);
 				fprintf(pf,"-1",1);
 				fclose(pf);
 			}
@@ -246,7 +262,6 @@ void MainCalc()
 	FILE* pf;
 	int num=0;
 	usleep(600*1000);
-	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0xff);
 	MapMenu1();
 	while (i<40)
 		{
@@ -254,49 +269,92 @@ void MainCalc()
 
 				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x01) == 0x01))
 				{
-					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE,0xff);
+					pf= fopen("/mnt/host/inbox.txt","w");
+					IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,0x00);
+					fprintf(pf,"-1",1);
+					fclose(pf);
+					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0x01);
 					num=(num+1)%7;
 					MAP(num);
 				}
 				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x02) == 0x02))
 				{
-					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0xff);
+					pf= fopen("/mnt/host/inbox.txt","w");
+					IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,0x00);
+					fprintf(pf,"-1",1);
+					fclose(pf);
+					IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0x02);
 					num=(num+6)%7;
 					MAP(num);
 				}
 				if( !((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x04) == 0x04))
 				{
+					char dist[6];
+					int * h;
 					switch(num)
 					{
 						case 0:
+
 							pf= fopen("/mnt/host/inbox.txt","w");
 							fprintf(pf,"11",1);
+							fclose(pf);
+							usleep(2000*2000);
+							pf= fopen("/mnt/host/dist.txt","r");
+							fgets(dist,6,pf);
+							h=atoi(dist);
+							IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
 							fclose(pf);
 							break;
 						case 1:
 							pf= fopen("/mnt/host/inbox.txt","w");
 						    fprintf(pf,"22",1);
 						    fclose(pf);
+						    usleep(2000*2000);
+						    pf= fopen("/mnt/host/dist.txt","r");
+						    fgets(dist,6,pf);
+						    h=atoi(dist);
+						    IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
+						    fclose(pf);
 						    break;
 						case 2:
 							pf= fopen("/mnt/host/inbox.txt","w");
 							fprintf(pf,"33",1);
 							fclose(pf);
+							usleep(2000*2000);
+						    pf= fopen("/mnt/host/dist.txt","r");
+						    fgets(dist,6,pf);
+						    h=atoi(dist);
+						    IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
 							break;
 						case 3:
 							pf= fopen("/mnt/host/inbox.txt","w");
 							fprintf(pf,"44",1);
 							fclose(pf);
+							usleep(2000*2000);
+						    pf= fopen("/mnt/host/dist.txt","r");
+						    fgets(dist,6,pf);
+						    h=atoi(dist);
+						    IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
 							break;
 						case 4:
 							pf= fopen("/mnt/host/inbox.txt","w");
 							fprintf(pf,"55",1);
 							fclose(pf);
+							usleep(2000*2000);
+						    pf= fopen("/mnt/host/dist.txt","r");
+						    fgets(dist,6,pf);
+						    h=atoi(dist);
+						    IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
 							break;
 						case 5:
 							pf= fopen("/mnt/host/inbox.txt","w");
 							fprintf(pf,"66",1);
 							fclose(pf);
+							usleep(2000*2000);
+						    pf= fopen("/mnt/host/dist.txt","r");
+						    fgets(dist,6,pf);
+						    h=atoi(dist);
+						    IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE,h);
 							break;
 						default:
 							return;
@@ -318,8 +376,8 @@ void MainMenu()
 	int i=0;
 	FILE* pf;
 	int num=0;
+	IOWR_ALTERA_AVALON_PIO_DATA(TO_HEX_BASE, 0x00);
 	Menu1();
-	IOWR_ALTERA_AVALON_PIO_DATA(LEDG_BASE, 0xff);
 	while (i<20)
 		{
 			while( ((IORD_ALTERA_AVALON_PIO_DATA(KEY_BASE) & 0x07) == 0x07) );
@@ -360,10 +418,6 @@ void MainMenu()
 }
 int main()
 {
-	//int pf;
-
-	//write(pf,"100\n",4);
-	//write(pf,"100",4);
 	MainMenu();
 
 

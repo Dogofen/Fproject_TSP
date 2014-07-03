@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'nios2_c'
  * SOPC Builder design path: ../../nios2_c.sopcinfo
  *
- * Generated: Sun Jun 22 14:37:52 IDT 2014
+ * Generated: Sun Jun 22 15:26:33 IDT 2014
  */
 
 /*
@@ -169,6 +169,14 @@
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "nios2_c"
+
+
+/*
+ * altera_hostfs configuration
+ *
+ */
+
+#define ALTERA_HOSTFS_NAME "/mnt/host"
 
 
 /*
